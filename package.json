@@ -1,0 +1,19 @@
+{
+  "name": "blog_website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "tailwindcss -i ./src/input.css -o ./static/css/output.css --watch",
+     "dev": "concurrently \"npm run watch\" \"python manage.py runserver\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^9.1.2",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^3.3.1"
+  }
+}
