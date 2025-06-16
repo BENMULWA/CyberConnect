@@ -103,6 +103,16 @@ const sr = ScrollReveal({
 sr.reveal('.home_data');  // Targets elements with class 'home_data'
 
 
+  const scrollUp = document.getElementById("scroll-up");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      scrollUp.style.bottom = "2rem"; // visible
+    } else {
+      scrollUp.style.bottom = "-50%"; // hidden
+    }
+  });
+
 
   
 
