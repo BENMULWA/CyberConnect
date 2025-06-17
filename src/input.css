@@ -3,10 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
-  @apply bg-green-950 text-white font-jost tracking-wider;
+  @apply bg-cover bg-center bg-no-repeat text-white font-jost tracking-wider;
+  background-image: url('/static/background.png'); /* Update path as needed */
 }
+
 
 .nav-link{
     @apply text-lg font-bold duration-300 delay-300;

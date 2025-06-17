@@ -33,3 +33,16 @@ module.exports = {
   },
   plugins: [],
 }
+
+
+//background
+
+module.exports = {
+  theme: {
+    extend: {
+      backgroundImage: {
+        'hero-pattern': "url('/static/images/bg.jpg')",
+      },
+    },
+  },
+};
