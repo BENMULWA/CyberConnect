@@ -610,10 +610,6 @@ video {
   position: relative;
 }
 
-.-bottom-1\/2{
-  bottom: -50%;
-}
-
 .-right-10{
   right: -2.5rem;
 }
@@ -622,20 +618,20 @@ video {
   top: -0px;
 }
 
-.-top-10{
-  top: -2.5rem;
-}
-
 .-top-5{
   top: -1.25rem;
 }
 
-.bottom-5{
-  bottom: 1.25rem;
+.bottom-4{
+  bottom: 1rem;
 }
 
 .bottom-6{
   bottom: 1.5rem;
+}
+
+.bottom-\[-100px\]{
+  bottom: -100px;
 }
 
 .left-0{
@@ -644,10 +640,6 @@ video {
 
 .left-1\/2{
   left: 50%;
-}
-
-.left-10{
-  left: 2.5rem;
 }
 
 .left-\[-100\%\]{
@@ -660,6 +652,10 @@ video {
 
 .right-0{
   right: 0px;
+}
+
+.right-2{
+  right: 0.5rem;
 }
 
 .right-20{
@@ -730,6 +726,10 @@ video {
 
 .mt-0{
   margin-top: 0px;
+}
+
+.mt-10{
+  margin-top: 2.5rem;
 }
 
 .mt-16{
@@ -813,8 +813,8 @@ video {
   min-height: fit-content;
 }
 
-.w-12{
-  width: 3rem;
+.w-10{
+  width: 2.5rem;
 }
 
 .w-56{
@@ -851,6 +851,10 @@ video {
 
 .max-w-screen-lg{
   max-width: 768px;
+}
+
+.max-w-xl{
+  max-width: 36rem;
 }
 
 .-translate-x-1\/2{
@@ -1090,6 +1094,10 @@ video {
   padding: 2.5rem;
 }
 
+.p-2{
+  padding: 0.5rem;
+}
+
 .p-4{
   padding: 1rem;
 }
@@ -1101,6 +1109,11 @@ video {
 .px-10{
   padding-left: 2.5rem;
   padding-right: 2.5rem;
+}
+
+.px-2{
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .px-3{
@@ -1168,14 +1181,9 @@ video {
   padding-bottom: 1rem;
 }
 
-.py-6{
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
-.py-8{
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+.py-7{
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
 }
 
 .pb-10{
@@ -1387,12 +1395,18 @@ video {
   opacity: 0.3;
 }
 
-.opacity-70{
-  opacity: 0.7;
+.opacity-40{
+  opacity: 0.4;
 }
 
 .opacity-90{
   opacity: 0.9;
+}
+
+.shadow-2xl{
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .shadow-lg{
@@ -1438,6 +1452,12 @@ video {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-all{
+  transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1665,6 +1685,14 @@ h3{
 }
 
 @media (min-width: 340px){
+  .sm\:bottom-6{
+    bottom: 1.5rem;
+  }
+
+  .sm\:right-4{
+    right: 1rem;
+  }
+
   .sm\:h-20{
     height: 5rem;
   }
@@ -1685,6 +1713,10 @@ h3{
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 
+  .sm\:flex-row{
+    flex-direction: row;
+  }
+
   .sm\:p-20{
     padding: 5rem;
   }
@@ -1694,9 +1726,33 @@ h3{
     padding-right: 1.5rem;
   }
 
+  .sm\:py-6{
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .sm\:text-left{
+    text-align: left;
+  }
+
+  .sm\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
   .sm\:text-3xl{
     font-size: 1.875rem;
     line-height: 2.25rem;
+  }
+
+  .sm\:text-4xl{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .sm\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   .sm\:text-lg{
@@ -1706,6 +1762,14 @@ h3{
 }
 
 @media (min-width: 540px){
+  .md\:bottom-8{
+    bottom: 2rem;
+  }
+
+  .md\:right-10{
+    right: 2.5rem;
+  }
+
   .md\:mb-16{
     margin-bottom: 4rem;
   }
@@ -1740,11 +1804,6 @@ h3{
 
   .md\:gap-2{
     gap: 0.5rem;
-  }
-
-  .md\:px-4{
-    padding-left: 1rem;
-    padding-right: 1rem;
   }
 
   .md\:px-8{
@@ -1840,6 +1899,21 @@ h3{
   .lg\:px-8{
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .lg\:py-7{
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .lg\:py-8{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .lg\:text-3xl{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 
   .lg\:text-4xl{
