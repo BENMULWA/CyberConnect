@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-^6bw(n1u%#w))gct+x)g5tisa29)k^ud^xdtmdf%b1)&7aq((3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['cyberconnect-221-ke.onrender.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['cyberconnect-ke-1.onrender.com', '127.0.0.1', 'localhost']
+
 
 
 
@@ -43,8 +44,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
