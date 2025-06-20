@@ -1,10 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './homepage/templates/blog/**/*.html',
-    './src/**/*.js',
-    './src/**/*.css',
-  ],
+  './templates/**/*.html',                 // global templates directory
+  './**/templates/**/*.html',              // app-specific templates
+  './**/templates/*.html',                 // direct html files
+  './src/**/*.{js,ts,jsx,tsx}',            // JS files if using any
+],
+
    safelist: [
     'left-[0]',
     'left-[-100%]',
@@ -34,15 +36,3 @@ module.exports = {
   plugins: [],
 }
 
-
-//background
-
-module.exports = {
-  theme: {
-    extend: {
-      backgroundImage: {
-        'hero-pattern': "url('/static/images/bg.jpg')",
-      },
-    },
-  },
-};

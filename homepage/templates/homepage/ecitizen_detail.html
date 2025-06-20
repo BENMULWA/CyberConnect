@@ -1,0 +1,48 @@
+{% extends "homepage/base.html" %}
+
+{% block title %}Ecitizen Service | Havilla{% endblock %}
+{% block content %}
+<section class="p-6 sm:p-10 w-full bg-white rounded-md shadow-md animate-fadeIn">
+  <div class="ml-10">
+  <h1 class="text-yellow-500 text-3xl sm:text-4xl font-Lobster mb-6 text-center">Ecitizen Application Service</h1>
+
+  <p class="text-lg text-gray-800 leading-relaxed text-center sm:text-left">
+    Our Ecitizen services include registration, renewals, application tracking, and more. 
+    We handle everything from NTSA, Passport applications, KRA PIN services, Good Conduct certificates, and much more.
+  </p>
+
+  <ul class="list-disc list-inside mt-4 text-gray-800 text-base sm:text-lg animate-slideInLeft">
+    <li>Passport application support</li>
+    <li>KRA PIN registration & recovery</li>
+    <li>Police Clearance (Good Conduct)</li>
+    <li>NTSA DL renewals and testing bookings</li>
+  </ul>
+
+  <div class="flex justify-center sm:justify-start">
+    <a href="https://wa.me/254714073826?text=Hello!%20I'm%20interested%20in%20booking%20the%20Ecitizen%20application%20service."
+      target="_blank"
+      class="inline-block mt-6 px-6 py-3 bg-yellow-500 text-green-950 font-bold rounded-lg hover:bg-yellow-400 transition transform hover:scale-105 duration-300 flex items-center gap-2">
+      <i class="ri-phone-fill"></i> Book Now
+    </a>
+  </div>
+
+  <div class="flex flex-col sm:flex-row gap-4 mt-8">
+    <a href="https://wa.me/254712345678?text=Hello!%20I'm%20interested%20in%20booking%20the%20Ecitizen%20application%20service."
+       target="_blank"
+       class="flex-1 px-6 py-3 bg-yellow-500 text-green-950 font-bold rounded-lg hover:bg-yellow-400 transition transform hover:scale-105 duration-300 text-center flex items-center justify-center gap-2">
+       <i class="ri-whatsapp-line"></i> WhatsApp
+    </a>
+
+    <a href="mailto:mulwabenard9507@gmail.com?subject=Ecitizen%20Service%20Booking&body=Hello%2C%20assist%20in%20renewing%20my%20DL."
+       class="flex-1 px-6 py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-400 transition transform hover:scale-105 duration-300 text-center flex items-center justify-center gap-2">
+       <i class="ri-mail-line"></i> Email
+    </a>
+
+    <a href="sms:+254714073826?&body=Hello,%20I%20want%20to%20book%20an%20Ecitizen%20service."
+       class="flex-1 px-6 py-3 bg-green-600 text-white font-bold rounded-lg hover:bg-green-500 transition transform hover:scale-105 duration-300 text-center flex items-center justify-center gap-2">
+       <i class="ri-message-2-line"></i> SMS
+    </a>
+  </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,4 +1,5 @@
 
+ 
  {% load static %}
 <!doctype html>
 <html>
@@ -11,6 +12,7 @@
 <link href="{% static 'css/output.css' %}" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
 
 
    <title>Blog E-commerce</title>
@@ -80,12 +82,16 @@
                         </p>
                         <div class="mt-7 py-8">
                              <div class="flex flex-row sm:flex-row gap-4">
-                            <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                            <a href="#services" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
                                 <span>Shop Now</span>
-                            </button>
-                            <button class="border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white font-semibold py-4 px-8 rounded-lg transition duration-400 ease-in-out transform hover:scale-105">
+                            </a>
+                   
+
+                            <button data-url="{% url 'know_more' %}" onclick="window.location.href=this.getAttribute('data-url')" 
+                                class="border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white font-semibold py-4 px-8 rounded-lg transition duration-400 ease-in-out transform hover:scale-105">
                                 <span class="font-mono font-bold">Know More</span>
                             </button>
+
                             </div>
                         </div>
                         <p class="text-xs font-Lobster text-slate-300 mt-3">
@@ -332,9 +338,13 @@
                         
                             <div class="flex flex-col items-center justify-center text-white mt-28 rounded-lg">
                                 <p class="text-lg font-semibold mb-2 italic">Ecitizen Applications</p>
+                                
+                                <a href="{% url 'ecitizen_detail' %}">
                                 <button class="mt-3 px-4 py-2 text-center bg-yellow-500 text-green-950 font-bold rounded-lg hover:bg-yellow-400 transition">
                                     Service Description
                                 </button>
+                                </a>
+                                
                                 <div class="text-yellow-500 text-xs py-3 flex justify-center gap-1">
                                     <i class="ri-star-fill"></i>
                                     <i class="ri-star-fill"></i>

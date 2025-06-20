@@ -3,44 +3,53 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ✅ Custom font classes */
+@layer utilities {
+  .font-jost {
+    font-family: 'Jost', sans-serif;
+  }
+
+  .font-Lobster {
+    font-family: 'Lobster', cursive;
+  }
+}
+
 body {
-  @apply bg-cover bg-center bg-no-repeat text-white font-jost tracking-wider;
-  background-image: url('/static/background.png'); /* Update path as needed */
+  @apply bg-green-950 text-white font-jost tracking-wider;
 }
 
-
-.nav-link{
-    @apply text-lg font-bold duration-300 delay-300;
+.nav-link {
+  @apply text-lg font-bold duration-300 delay-300;
 }
 
-.nav-link:hover{
-    @apply text-yellow-500;
-}
-
-.active{
+.nav-link:hover {
   @apply text-yellow-500;
-
 }
-section{
+
+.active {
+  @apply text-yellow-500;
+}
+
+section {
   @apply py-20 md:py-28;
-
-}
-h1{
-    @apply text-2xl md:text-4xl xl:text-5xl font-bold;
 }
 
-h2{
-  @apply text-2xl md:text-3xl xl:text-4xl
+h1 {
+  @apply text-2xl md:text-4xl xl:text-5xl font-bold;
 }
- 
-h3{
+
+h2 {
+  @apply text-2xl md:text-3xl xl:text-4xl;
+}
+
+h3 {
   @apply text-xl md:text-2xl xl:text-3xl;
 }
 
-.title{
-  @apply font-Lobster text-yellow-500
+.title {
+  @apply font-Lobster text-yellow-500;
 }
 
-.service_card:hover img{
+.service_card:hover img {
   @apply -top-8;
 }

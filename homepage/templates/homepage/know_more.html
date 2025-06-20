@@ -1,0 +1,144 @@
+{% extends "homepage/base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="bg-white">
+<!-- Half-page Height Image -->
+<div class="relative w-full h-[100vh] sm:h-[80vh] md:h-[70vh] overflow-hidden flex items-center justify-center bg-white">
+  <img src="{% static 'know_more.png' %}" alt="Know More"
+       class="w-28 h-48 object-contain" />
+</div>
+
+
+<!-- Text Content introduction -->
+
+<div class="min-h-screen bg-white py-10 px-4 sm:px-6 lg:px-8">
+  <div class="w-full mt-16 bg-gray-100 rounded-3xl shadow-xl overflow-hidden p-4 sm:p-6 md:p-8">
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-green-800 mb-4 text-center">More About CyberConnect</h1>
+
+    <p class="text-black text-2xl  ml-10 sm:text-lg mb-6 font-serif">
+      <strong class="text-xl">CyberConnect</strong> is a modern digital service hub committed to meeting the everyday tech needs of individuals, students, and enterpreneur businesses who wants to access and connect services online.
+      <br>Whether you're applying for government services, printing academic documents, or just need fast and reliable internet — CyberConnect is your trusted partner. We provide a comfortable and professional environment where technology meets convenience.
+     
+    </p>
+    
+    <div class="w-full flex justify-center px-4 py-0 bg-gray-50">
+      <div class="text-2xl">
+        <h2 class="text-2xl font-bold text-green-700 text-center mb-6">
+          Our Services Include:
+        </h2>
+       <ul class="list-disc list-inside text-black space-y-4 text-base sm:text-xl md:text-2xl">
+        <li>High-speed Internet Access</li>
+        <li>Document Typing and Printing</li>
+        <li>Scanning & Photocopying</li>
+        <li>Online Government Services (eCitizen, HELB, KRA, etc.)</li>
+        <li>Academic Research and Support</li>
+        <li>Graphic Design & Profesional CV Creation</li>
+        <li>Passport Photo Services</li>
+         </ul>
+      </div>
+    </div>
+
+
+   
+    </div>
+    <section class="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto gap-8">
+    
+    <!-- Left: Image -->
+         <div class="w-full md:w-1/2">
+          <img src="{% static 'why_us.png' %}" alt="Why Choose Us" class="w-full h-auto object-contain rounded-xl shadow-lg" />
+        </div>
+
+    <!-- Right: Text -->
+         <div class="w-full md:w-1/2">
+          <h2 class="text-3xl ml-10 font-bold text-green-800 mb-4">   Why Choose Us?</h2>
+        <ul class="space-y-3 text-gray-700 text-base sm:text-lg leading-relaxed">
+        <li>✔️ <strong>Fast turnaround times</strong> – Get your documents and services completed quickly.</li>
+        <li>✔️ <strong>Affordable pricing</strong> – We offer competitive rates for students and professionals alike.</li>
+        <li>✔️ <strong>Friendly, tech-savvy support</strong> – Our team is always ready to help with a smile.</li>
+        <li>✔️ <strong>Convenient Available Online</strong> – Easily accessible for walk-ins at any time.</li>
+      </ul>
+    </div>
+
+  </div>
+ 
+</section>
+<section class="bg-gray-50 py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold text-green-800 mb-8">Our Vision & Mission</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mt-10 ">
+      <!-- Vision -->
+      <div class="bg-white shadow-md rounded-3xl p-6 px-10 py-10 border-t-10 border-green-500">
+        <h3 class="text-2xl font-semibold text-green-700 mb-4">Our Vision</h3>
+        <p class="text-black text-base sm:text-2xl leading-relaxed">
+          To be the most trusted and accessible digital service provider in Kenya—empowering individuals, students, and small businesses through technology-driven solutions.
+        </p>
+      </div>
+
+      <!-- Mission -->
+      <div class="bg-white shadow-md rounded-2xl p-6 px-10 py-10  border-t-10 border-yellow-400">
+        <h3 class="text-2xl font-semibold text-yellow-600 mb-4">Our Mission</h3>
+        <p class="text-black text-base sm:text-2xl leading-relaxed">
+          To deliver fast, reliable, and affordable tech services—ranging from internet access and document solutions to digital design and government e-services—all in one convenient location.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--Testimonal-->
+<section class="bg-white py-16 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-2xl mx-auto text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-green-800 mb-8">What Our Customers Say</h2>
+    
+    <div class="bg-gray-100 rounded-3xl px-10 sm:rounded-2xl p-6 py-10 shadow-md mt-6">
+      <p class="text-gray-700 text-lg italic">"CyberConnect made my HELB application and KRA Return super easy! Their team is friendly, fast, and very helpful. Highly recommend for any digital service you need."</p>
+      <div class="mt-4 text-green-700 font-semibold text-sm sm:text-base">— Terry Raduck, Maseno University Student</div>
+    </div>
+  </div>
+</section>
+
+
+
+    <div>
+     <!-- Add this inside your <head> or a CSS file -->
+<style>
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-scroll-left {
+    animation: scroll-left 20s linear infinite;
+    white-space: nowrap;
+  }
+</style>
+
+<!-- HTML Section -->
+<div class="overflow-hidden bg-white py-4">
+  <p class="text-green-800 text-xl sm:text-base font-semibold animate-scroll-left">
+    Visit us anytime — we are open 24/7 to serve your digital needs efficiently and professionally.
+  </p>
+</div>
+
+
+      <div class="mt-8 mb-5 text-center">
+      <a href="{% url 'homepage' %}" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white py-3 px-6 rounded-lg shadow-lg transition duration-300">
+        Back to Home
+      </a>
+      </div>
+    </div>
+  </div>
+
+</section>
+</div>
+
+
+{% endblock %}
