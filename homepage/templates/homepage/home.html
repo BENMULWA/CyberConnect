@@ -18,10 +18,10 @@
    <title>Blog E-commerce</title>
 
 </head>
-<body class="bg-hero-pattern bg-cover bg-center bg-no-repeat text-white font-jost tracking-wider">
+<body class="bg-white text-black">
 
     <!--header-->
-    <header  id="navbar" class="bg-green-700 fixed w-full top-0 left-0 z-50">
+    <header  id="navbar" class="bg-green-700 sm:py- md:py-8 lg:py-5 xl:6 fixed w-full top-0 left-0 z-50">
         <nav class="container flex bitems-center justify-between h-18 sm:h-20">
              <div class="text-white font-Lobster text-xl sm:text-2xl md:text-2xl lg:text-3xl mt-4 drop-shadow-sm sm:mt-5">
                     DIGITECH SOLUTIONS
@@ -73,18 +73,18 @@
                 <div class="flex flex-col items-center gap-5 lg:flex-row">
                     <!--content-->
 
-                    <div class="home_data w-full space-y-5 mt-8 px-4 sm:px-6 md:px-8 py-4 lg:w-1/2">
-                        <h1 class="text-2xl md:text-5xl font-bold text-white leading-tight">
-                            <span class="text-yellow-500 text-4xl md:text-5xl">Welcome</span> <span class="text-2xl space-y-2"> to HAVILLA Cyber Café Online Service Platform!</h1></span> <br>
-                        <p class="text-lg">Provides essential digital services, offering a range of <br> internet-based solutions for<span class="text-yellow-400 font-semibold"> individuals, businesses-based entrepreneurs, and students</span>.
+                    <div class="home_data w-full space-y-5 mt-3 px-2 sm:px-6 md:px-8 py-4 lg:w-1/2">
+                        <h1 class="text-xl md:text-xl font-bold text-black">
+                            <span class=" text-2xl md:text-2xl">Welcome</span> <span class="text-xl"> to HAVILLA Cyber Café Online Service Platform!</span></h1> <br>
+                        <p class="text-lg">Provides essential digital services, offering a range of internet-based solutions for<span class=""> individuals, businesses-based entrepreneurs, and students</span>.
                         </p>
-                        <br>
+                    
                         <p class="text-lg">
                             We serve as convenient hubs for communication, research, and professional work—especially in areas where personal computers or stable internet connections might be unavailable.
                         </p>
-                        <div class="mt-7 py-8">
+                        <div class="flex flex-wrap gap-4 pt-4">
                              <div class="flex flex-row sm:flex-row gap-4">
-                            <a href="#services" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                            <a href="#services" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-4 px-8 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
                                 <span>Shop Now</span>
                             </a>
                    
@@ -96,10 +96,10 @@
 
                             </div>
                         </div>
-                        <p class="text-xs font-Lobster text-slate-300 mt-3">
+                        <p class="text-xs font-Lobster text-black mt-3">
                             We are Open 24 Hours
                         </p>
-                        <div class="flex flex-wrap gap-3 md:gap-2  md:text-2xl text-lg text-white py-4">
+                        <div class="flex flex-wrap gap-3 md:gap-2  md:text-2xl text-lg  py-4">
                             <i class="ri-whatsapp-line w-8 h-8 text-2xl hover:text-green-500 transition-colors duration-300 w-18 h-18 cursor-pointer"></i>
                             <i class="ri-messenger-line w-8 h-8 text-2xl hover:text-blue-400 transition-colors duration-300 cursor-pointer"></i>
                             <i class="ri-facebook-fill w-8 h-8 text-2xl hover:text-blue-600 transition-colors duration-300 cursor-pointer"></i>
@@ -110,9 +110,9 @@
                     </div>
 
                     <!--image-->
-                    <div class="w-full relative lg:w-1/2 -top-0 right-0">
-                        <img src="{% static 'homepage.png' %}" alt="home"   class="home_image w-full max-w-xl h-auto object-contain mx-auto shadow-2xl p-2">
-                        
+                    <div class="w-full h-auto lg:w-1/2 relative flex justify-center items-center pt-5 py-0">
+                        <img src="{% static 'advert.png' %}" alt="homepage.tech" class="home_image w-full h-auto max-w-full pt-0  rounded-3xl object-contain p-2">
+                    </div>
                         <!--Animations-
                         <div class="absolute -top-5 right-20 text-yellow-300 text-6xl animate-bounce opacity-30 pointer-events-none">
                             <i class="ri-computer-fill"></i>
@@ -127,21 +127,21 @@
                         <div class="absolute bottom-6 -right-10 text-yellow-300 text-6xl animate-bounce-soft opacity-40 pointer-events-none hover:scale-125 transition-transform duration-300 drop-shadow-[0_0_10px_#facc15]">
                             <i class="ri-remote-control-line"></i>
                         </div>-->
-                    </div>
 
                 </div>
             </div>
         </section>
 
         <!--services-->
-        <section id="review">
+        <section id="review" class="mt-0 pt-0 py-0">
+            <div class="pt-0 mt-0">
             <div class="flex flex-col items-center gap-2 text-center mb-10 md:mb-16">
                             <h2 class="title">Cutomer Review</h2> 
                                 <p class="max-w-2xl">
                                 Follow Instructions & Guidlines for More <br> information.
                                 </p>
             </div>
-            <div class="bg-white text-green-900 rounded-2xl shadow-lg border border-gray-200 mx-auto px-4 md:px-8 py-10 max-w-7xl">
+            <div class="bg-gray-100 text-green-900 rounded-2xl shadow-lg border border-gray-200 mx-auto px-4 md:px-8 py-10 max-w-7xl">
             <div class="container w-full grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 <!--card 1-->
                 <div class="service_card border border-green-900 p-5 cursor-pointer rounded-md hover:shadow-2xl hover:-translate-y-1 duration-300">
@@ -241,10 +241,11 @@
                     <p class="font-Lobster text-base">Am perfect critical in all types of professional Graphic models which include; <br><span class="font-sans font-bold text-green-700">
                         Logos, flyers, posters, banners, wedding & Eulogy programs as well as branding materials designed to captivate and communicate.</span>
                 </div>
-                
-                
+              
             </div>
             </div>
+
+        </div>
         </section>
     </main>
             
@@ -253,7 +254,7 @@
 
 <!--About me-->
         <section id="about" class="relative overflow-hidden ">
-            <div class="about_top bg-green-500 flex flex-col items-center gap-3 text-center mb-10 md:mb-20  rounded-3xl px-2 py-7 p-4 shadow-lg">
+            <div class="about_top flex flex-col items-center gap-3 text-center mb-2 md:mb-20  px-2 py-2 p-4">
 
                 <h2 class="title text-4xl ">About me</h2> 
                     <p class="max-w-2xl text-lg">
@@ -261,7 +262,7 @@
                     </p>
             </div>
 
-                    <div class="container mx-auto px-4 py-10 space-y-16">
+                    <div class="container mx-auto px-4 py-2 space-y-2">
                         <!--Item 1 -->
                         <div class="flex flex-col items-center lg:flex-row gap-5">
                             <!--Image section-->
@@ -271,8 +272,8 @@
                                 <!--Text to right-->
                             <div class="about_item_2-content w-full lg:w-1/2 space-y-7 text-xl text-left">
                                 <div>
-                                    <h3 class="text-xl font-sans font-bold text-center underline decoration-yellow-500 decoration-4 underline-offset-4">
-                                       Powering  Every day <span class="text-yellow-500">Digital Technology</span>  <br>
+                                    <h3 class="text-2xl  font-bold text-center">
+                                       Powering  Every day <span class="">Digital Technology</span>  <br>
                                         Access to All Clients.
                                      </h3> 
                                      <br>
@@ -304,19 +305,19 @@
                             </div>
                             <!--Text to right-->
                             <div class="about_item_2-content w-full lg:w-1/2 space-y-7 text-xl text-left">
-                                <div class="space-y-5">
-                                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-yellow-500">
-                                           Now Your Ultimate Digital online Solutions Gateway <span class="text-white">Starts Here!</span></h2>
+                                <div class="space-y-1">
+                                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-0 ">
+                                           Now Your Ultimate Digital online Solutions Gateway <span class="">Starts Here!</span></h2>
                                         <br>
-                                        <p class="text-base sm:text-lg md:text-xl font-normal ">Welcome to <span class="text-yellow-400 font-semibold">DIGITECH Blog</span>, your trusted digital gateway for smart, reliable, and timely online solutions
+                                        <p class="text-base sm:text-lg md:text-xl font-normal ">Welcome to <span class="text-yellow-600 font-semibold">DIGITECH Blog</span>, your trusted digital gateway for smart, reliable, and timely online solutions
                                              
-                                       as well as we offer a seamless digital experience. From <span class="text-white font-semibold">fast and secure  browsing</span>, to <span class="text-white font-semibold">online application support</span> 
-                                         and <span class="text-white font-semibold">academic services</span>, we  cater to students, professionals, and entrepreneurs alike.
+                                       as well as we offer a seamless digital experience. From <span class="font-semibol">fast and secure  browsing</span>, to <span class="font-semibold">online application support</span> 
+                                         and <span class="font-semibold">academic services</span>, we  cater to students, professionals, and entrepreneurs alike.
                                         </p> 
                                         <br>
-                                    <p class="text-base sm:text-lg md:text-xl font-normal">Our platform is designed for <span class="text-white font-semibold">comfort, efficiency</span>, and
-                                        <span class="text-white font-semibold">affordability</span>, making it the perfect space for work, study, or business.
-                                        Whether you're submitting urgent documents, attending virtual meetings, or researching for school, <span class="text-yellow-400 font-semibold">DIGITECH Website</span> is your go-to digital hub. 
+                                    <p class="text-base sm:text-lg md:text-xl font-normal">Our platform is designed for <span class="font-semibold">comfort, efficiency</span>, and
+                                        <span class="font-semibold">affordability</span>, making it the perfect space for work, study, or business.
+                                        Whether you're submitting urgent documents, attending virtual meetings, or researching for school, <span class="text-yellow-600 font-semibold">DIGITECH Website</span> is your go-to digital hub. 
                                     </p>
                                 </div>
                             </div>
@@ -326,17 +327,17 @@
         </section>
 
                 <!--Services-->
-                <section id="services" class="bg-green-900">
+                <section id="services" class="bg-yellow-100 rounded-3xl">
 <!--heading 1-->
                         <div class="service_top flex flex-col items-center gap-1 text-center mb-10 md:mb-28">
-                            <h2 class="title">Our Services</h2>
-                            <p class="max-w-2xl">Explore Our Core Offers</p>
+                            <h2 class="title text-4xl">Our Services</h2>
+                            <p class="max-w-2xl text-xl">Explore Our Core Offers</p>
                         </div>
 
                     <div class="container w-full grid grid-cols-1 gap-x-8 gap-y-36 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 <!--Service grid 1-->
 
-                        <div class="service_card bg-green-950 service_card p-10 sm:p-20 pt-52 rounded-md relative w-full max-w-md mx-auto">
+                        <div class="service_card bg-green-900 service_card p-10 sm:p-20 pt-52 rounded-md relative w-full max-w-md mx-auto">
                             <img src="{% static 'ecitizen_service.png' %}" alt="ecitizen" class="w-56 sm:w-44 absolute -top-5 left-1/2 transform -translate-x-1/2 rounded-2xl shadow-md transition-transform duration-300 hover:scale-105"/>
                         
                         
@@ -366,7 +367,7 @@
                     
 
  <!--Service grid 2--> 
-                        <div class="service_card bg-green-950 service_card p-10 sm:p-20 pt-52 rounded-md relative w-full max-w-md mx-auto">
+                        <div class="service_card bg-green-900 service_card p-10 sm:p-20 pt-52 rounded-md relative w-full max-w-md mx-auto">
                             <img src="{% static 'NTSA.png' %}" alt="ecitizen" class="w-56 sm:w-44 absolute -top-5 left-1/2 transform -translate-x-1/2 rounded-2xl shadow-md transition-transform duration-300 hover:scale-105"/>
                         
                         
@@ -391,7 +392,7 @@
                         
                    
  <!--Service grid 3--> 
-                        <div class="service_card bg-green-950 service_card p-10 sm:p-20 pt-52 rounded-md relative w-full max-w-md mx-auto">
+                        <div class="service_card bg-green-900 service_card p-10 sm:p-20 pt-52 rounded-md relative w-full max-w-md mx-auto">
                             <img src="{% static 'KRA.png' %}" alt="ecitizen" class="w-56 h-44 max-h-[500px] sm:w-44 absolute -top-5 left-1/2 transform -translate-x-1/2 rounded-3xl shadow-md transition-transform duration-300 hover:scale-105"/>
                         
                         
@@ -415,7 +416,7 @@
                         </div>  
                         
  <!--Service grid 4--> 
-                        <div class="service_card bg-green-950 service_card p-10 sm:p-20 pt-52 rounded-md relative w-full max-w-md mx-auto">
+                        <div class="service_card bg-green-900 service_card p-10 sm:p-20 pt-52 rounded-md relative w-full max-w-md mx-auto">
                             <img src="{% static 'SHA.png' %}" alt="ecitizen" class="w-56 sm:w-56 absolute -top-5 left-1/2 transform -translate-x-1/2 rounded-3xl shadow-md transition-transform duration-300 hover:scale-105"/>
                         
                         
@@ -439,7 +440,7 @@
                         </div>   
 
  <!--Service grid 5--> 
-                        <div class="service_card bg-green-950 service_card p-10 sm:p-20 pt-52 rounded-md relative w-full max-w-md mx-auto">
+                        <div class="service_card bg-green-900 service_card p-10 sm:p-20 pt-52 rounded-md relative w-full max-w-md mx-auto">
                             <img src="{% static 'HELB.png' %}" alt="ecitizen" class="w-56 sm:w-44 absolute -top-5 left-1/2 transform -translate-x-1/2 rounded-2xl shadow-md transition-transform duration-300 hover:scale-105"/>
                         
                         
@@ -463,7 +464,7 @@
                         </div>
 
  <!--Service grid 6--> 
-                        <div class="service_card bg-green-950 service_card p-10 sm:p-20 pt-52 rounded-md relative w-full max-w-md mx-auto">
+                        <div class="service_card bg-green-900 service_card p-10 sm:p-20 pt-52 rounded-md relative w-full max-w-md mx-auto">
                             <img src="{% static 'TSC.png' %}" alt="ecitizen" class="w-56 sm:w-44 absolute -top-5 left-1/2 transform -translate-x-1/2 rounded-2xl shadow-md transition-transform duration-300 hover:scale-105"/>
                         
                         
@@ -629,10 +630,10 @@
             </div>
         </section>
 
-<!--Footer-->
+<!--Footer--
         
-        <footer class=" bg-yellow-100 text-green-950 pt-20 pb-10 md:pt-28 relative">
-                <!--Quick links-->
+        <footer class=" bg-gray-100 text-green-950 pt-20 pb-10 md:pt-28 relative">
+                <!--Quick links--
                 <div class="footer_links container text-white absolute top-0 right-0 left-0 -translate-y-1/2">
                     <div class="bg-green-900 px-10 pt-5 pb-10 space-y-5 rounded-md">
                         <h3>
@@ -649,7 +650,7 @@
                         </div>
                     </div>
                 </div>
-            <!--social icon-->
+            <!--social icon--
             <div class="footer_icon container mt-16 mb-10">
                 <div class="border-b border-green-500 relative">
                     <div class="absolute top-1 transform -translate-y-1/2 left-0 right-0 max-w-36 mx-auto">
@@ -665,16 +666,16 @@
                     </div>
                 </div>
             </div>
-            <!--footer summary-->
+            <!--footer summary--
 
-            <!--Logo & quick decription-->
+            <!--Logo & quick decription--
             <div class="footer_logo container items-center grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-8 text-center md:text-start">
                 <div class="p-4 flex justify-center">
                     <div class="w-96 md:w-56 aspect-square overflow-hidden rounded-full bg-white shadow-lg">
                         <img src="{% static 'logo.png' %}" alt="web_logo"  class="w-full h-full object-contain p-1" >
                     </div>
                 </div>
-              <!--Quick Services-->
+              <!--Quick Services--
             <div class="py-16 max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8">
                 <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">--Quick Services--</h3>
                 
@@ -689,7 +690,7 @@
                 
             </div>
         
-            <!--support-->
+            <!--support--
             <div>
                 <h3 class="text-xl font-semibold text-yellow-500 mb-2">Support</h3>
                 <ul class="space-y-2 text-gray-400">
@@ -698,7 +699,7 @@
                  <li><a href="#" class="hover:text-yellow-400">Privacy Policy</a></li>  
                 </ul>
             </div>
-            <!--contacts-->
+            <!--contacts--
             <div>
                <h3 class="text-xl font-bold text-yellow-500 mb-2 rounded-md">Contact Me</h3>
                 <ul class="flex flex-col text-gray-400">
@@ -709,18 +710,88 @@
                 </ul>
             </div>
             </div>
-            <!--copyright-->
+            <!--copyright--
            <div class="w-full mt-6 sm:mt-7 mx-4 sm:mx-0 bg-green-900 text-slate-200 py-3 px-4 rounded-lg shadow-md text-sm sm:text-base">
                 <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left">
 
                     <p class="text-center md:text-left ml-9 text-black font-bold text-lg"> &copy;   Copyright  2025  <span class="font-semibold text-yellow-400"> CyberConnect</span>. All rights reserved.</p>
                    <!--<p class="text-center md:text-right mt-2 mr-20  text-sm font-Lobster italic md:mt-0">Made <i class="fas fa-heart text-red-500 mx-1"></i> by 
                     <a href="#" class="text-yellow-400 hover:underline">BENARD MULWA</a>
-                    </p>-->
+                    </p>--
                 </div>
             </div>
         
+        </footer-->
+
+        <footer>
+            <div class="p-10 bg-gray-100 text-black">
+                <div class="max-w-7xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+                        <div class="mb-5">
+                            <h2 class="pb-4">Company</h2>
+                            CyberConnect <br>
+                            0001, Moi Avenue CBD <br>
+                            Nairobi Kenya, <br>
+                            <strong>Phone:</strong> +254 714073826  +254 25603575 <br>
+                            <strong>Email:</strong> mulwabenard9507@gmail.com
+                            
+
+                        </div>
+                        <div class="mb-6">
+                            <h3 class="pb-4"> Quick Links</h3>
+                            <ul class="">
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i><a href="#" class="hover:text-yellow-500"> Services</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">Terms of Services</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">Policy Privacy</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">FAQs</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">IT Support</a></li>
+                            </ul>
+                        </div> 
+                        
+                        <div class="mb-6">
+                           <h3 class="pb-4">ALL Services</h3>
+                            <ul class="">
+                                <li class="pb-4"><i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">KRA Applications</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">Ecitizen Applications</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">NTSA Services</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">TSC Services</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">SHA APPs</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">HELB Help Desk</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">NCA Apps</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">Graphic Designs</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">Software Developments</a></li>
+                            </ul>   
+                        </div>
+                        <div class="mb-5">
+                            <h3 class="pb-4">Join Our NewsLetter</h3>
+                            <p class="text-gray-500 pb-4">Join 100+ others and never Miss Out on new tips, Dicounts, Tutorials and More offered at Our Website </p>
+                            <form class="flex flex-row flex-wrap">
+                                <input type="text" class="text-yellow-600 w-1/2 p-3 focus:border-yellow-500" placeholder="email@example.com">
+                                <button class="p-2 w-1/4  py-3  bg-yellow-500 text-white hover:bg-yellow-600 flex items-center gap-5 justify-center">Subscribe
+                                    <i class="ri-send-plane-2-fill"></i>
+                                </button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full bg-green-700 text-white py-6 px-4 text-center">
+                <div>
+                    <div>
+                        <div>
+                            © Copyright <strong><span>CyberConnect</span></strong> 2025. All Rights Reserved 
+                        </div>
+                    </div>
+                    <div>
+                        Designed by <a href="#" class="text-yellow-500">BENARD MULWA</a>
+                    </div>
+                </div>
+
+            </div>
         </footer>
+
+
 
 <!-- Scroll Up Button -->
         <a href="#" id="scroll-up"

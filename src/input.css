@@ -14,9 +14,15 @@
   }
 }
 
+
 body {
-  @apply bg-green-950 text-white font-jost tracking-wider;
-}
+  @apply bg-white text-black font-jost tracking-wider;
+} 
+
+/*.bg-custom-background {
+  @apply bg-[url('/static/back.png')] bg-repeat;
+}*/
+
 
 .nav-link {
   @apply text-lg font-bold duration-300 delay-300;
