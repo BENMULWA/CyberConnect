@@ -14,25 +14,42 @@
 
 <body class="bg-hero-pattern bg-cover bg-center bg-no-repeat text-white font-jost tracking-wider">
 
-    <!-- Header/Navbar -->
-    <header id="navbar" class="bg-green-700 fixed w-full top-0 left-0 z-50">
-        <nav class="container flex items-center justify-between h-18 sm:h-20">
-            <div class="font-Lobster text-white drop-shadow-lg py-2 ml-6 text-2xl sm:text-2xl md:text-2xl lg:text-3xl lg:py-8">DIGITECH SOLUTIONS</div>
-            <div id="nav-menu" class="absolute top-0 left-[-100%] min-h-[80vh] w-full lg:static lg:min-h-fit lg:bg-transparent lg:w-auto
-            bg-green-950/80 backdrop-blur-sm flex items-center justify-center duration-300 overflow-hidden">
-                <ul class="flex flex-col text-white items-center gap-8 lg:flex-row">
-                    <li><a href="{% url 'homepage' %}" class="nav-link">Home</a></li>
-                    <li><a href="#review" class="nav-link">Review</a></li>
-                    <li><a href="#about" class="nav-link">About Me</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#careers" class="nav-link">IT Careers</a></li>
-                </ul>
-            </div>
-            <div class="text-xl sm:text-3xl cursor-pointer z-50 mt-5 py-3 px-3 bg-green-700 rounded-md text-white hover:bg-green-600 hover:text-yellow-400 transition duration-300">
-                <i class="ri-menu-fold-fill" id="hamburger"></i>
-            </div>
-        </nav>
-    </header>
+<!--header-->
+    <header id="navbar" class="bg-green-700 sm:py-2 md:py-5 lg:py-5 fixed w-full top-0 left-0 z-50 shadow-lg">
+    <nav class="container flex items-center justify-between h-18 sm:h-20">
+
+        <div class="flex items-center gap-4 mt-2 sm:mt-5 py-3">
+            <img src="{% static 'header_logo.png' %}" alt="Logo"
+                class="w-56 h-44 max-h-44 mt-5 mb-10 transition-transform duration-300 hover:scale-110 hover:rotate-1 object-contain">
+        </div>
+
+        <!-- Menu -->
+        <div id="nav-menu" class="absolute top-0 left-[-100%] min-h-[80vh] w-full md:static md:w-auto md:min-h-fit lg:static lg:min-h-fit lg:bg-transparent lg:w-auto
+        bg-green-950/80 backdrop-blur-sm flex items-center justify-center duration-300 overflow-hidden">
+            <ul class="flex flex-col text-white items-center gap-8 lg:flex-row">
+                <li><a href="{% url 'homepage' %}" class="nav-link">Home</a></li>
+                <li><a href="{% url 'review' %}" class="nav-link">Blog Review</a></li>
+                <li><a href="{% url 'about' %}" class="nav-link">About Me</a></li>
+                <li><a href="{% url 'services' %}" class="nav-link">All Services</a></li>
+                <li><a href="{% url 'careers' %}" class="nav-link">IT Careers</a></li>
+                <li><a href="#downloads" class="nav-link">Downloads</a></li>
+
+                    
+            </ul>
+        </div>
+        <div class="flex items-center gap-8 pr-6">
+        <!-- Cart Icon -->
+        <div class="relative cursor-pointer py-3 px-2">
+            <i class="ri-shopping-cart-2-fill text-white sm:text-3xl lg:text-4xl hover:scale-105 hover:text-yellow-500 transition duration-300"></i>
+        </div>
+
+        <!-- Hamburger Icon -->
+        <div class="cursor-pointer z-50 text-white hover:bg-green-600 hover:text-yellow-400 transition duration-300 rounded-md">
+            <i class="ri-list-unordered text-4xl sm:text-5xl md:text-6xl lg:text-6xl" id="hamburger"></i>
+        </div>
+
+    </nav>
+</header>
 
     <!-- Main content block -->
     <main class="pt-24">
@@ -47,80 +64,71 @@
     <script src="{% static 'js/scrollreveal.min.js' %}"></script>
 
 
-        <footer class=" bg-yellow-100 text-green-950 pt-20 pb-10 md:pt-28 relative">
-                <!--Quick links-->
-                <div class="footer_links container text-white absolute top-0 right-0 left-0 -translate-y-1/2">
-                    <div class="bg-green-700 px-5 pt-5 pb-10 mb-10 space-y-5 rounded-md">
-                        <h3>
-                            <span class="text-yellow-500"> Subscribe</span> to our newsletter
-                        </h3>
+         <footer>
+            <div class="p-10 bg-gray-100 text-black">
+                <div class="max-w-7xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+                        <div class="mb-5">
+                            <h2 class="pb-4">Company</h2>
+                            CyberConnect <br>
+                            0001, Moi Avenue CBD <br>
+                            Nairobi Kenya, <br>
+                            <strong>Phone:</strong> +254 714073826  +254 25603575 <br>
+                            <strong>Email:</strong> mulwabenard9507@gmail.com
+                            
 
-                        <div class="flex flex-col md:flex-row gap-1">
-                            <input type="email" placeholder="Your Email Address" class="w-full px-5 py-3 text-green-900 rounded-md outline-none">
-                            <button class="flex items-center gap-1 justify-center bg-green-950 px-5 py-3 rounded-md hover:opacity-80 duration-300">
-                                <span>Subscribe</span>
-                                <i class="ri-send-plane-2-fill"></i>
+                        </div>
+                        <div class="mb-6">
+                            <h3 class="pb-4"> Quick Links</h3>
+                            <ul class="">
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i><a href="#" class="hover:text-yellow-500"> Services</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">Terms of Services</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">Policy Privacy</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">FAQs</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">IT Support</a></li>
+                            </ul>
+                        </div> 
+                        
+                        <div class="mb-6">
+                           <h3 class="pb-4">ALL Services</h3>
+                            <ul class="">
+                                <li class="pb-4"><i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">KRA Applications</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">Ecitizen Applications</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">NTSA Services</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">TSC Services</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">SHA APPs</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">HELB Help Desk</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">NCA Apps</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">Graphic Designs</a></li>
+                                <li class="pb-4"> <i class="fa fa-chevron-right"></i> <a href="#" class="hover:text-yellow-500">Software Developments</a></li>
+                            </ul>   
+                        </div>
+                        <div class="mb-5">
+                            <h3 class="pb-4">Join Our NewsLetter</h3>
+                            <p class="text-gray-500 pb-4">Join 100+ others and never Miss Out on new tips, Dicounts, Tutorials and More offered at Our Website </p>
+                            <form class="flex flex-row flex-wrap">
+                                <input type="text" class="text-yellow-600 w-1/2 p-3 focus:border-yellow-500" placeholder="email@example.com">
+                                <button class="p-2 w-1/4  py-3  bg-yellow-500 text-white hover:bg-yellow-600 flex items-center gap-5 justify-center">Subscribe
+                                    <i class="ri-send-plane-2-fill"></i>
+                                </button>
 
-                            </button>
+                            </form>
                         </div>
                     </div>
                 </div>
-            <!--social icon-->
-            <div class="footer_icon container mt-16 mb-10">
-                <div class="border-b border-green-500 relative">
-                    <div class="absolute top-1 transform -translate-y-1/2 left-0 right-0 max-w-36 mx-auto">
-                        <div class="bg-yellow-100 text-sm text-center space-x-1">
-                            <i class="ri-whatsapp-line w-8 h-8 text-2xl hover:text-green-500 transition-colors duration-300 w-18 h-18 cursor-pointer"></i>
-                            <i class="ri-messenger-line w-8 h-8 text-2xl hover:text-blue-400 transition-colors duration-300 cursor-pointer"></i>
-                            <i class="ri-facebook-fill w-8 h-8 text-2xl hover:text-blue-500 transition-colors duration-300 cursor-pointer"></i>
-                            <i class="ri-instagram-line w-8 h-8 text-2xl hover:text-pink-500 transition-colors duration-300 cursor-pointer"></i>
-                            <i class="ri-linkedin-box-fill w-8 h-8 text-2xl hover:text-blue-600 transition-colors duration-300 cursor-pointer"></i>
-                            <i class="ri-mail-line w-8 h-8 text-2xl hover:text-yellow-500 transition-colors duration-300 cursor-pointer"></i>
-
+            </div>
+            <div class="w-full bg-green-700 text-white py-6 px-4 text-center">
+                <div>
+                    <div>
+                        <div>
+                            © Copyright <strong><span>CyberConnect</span></strong> 2025. All Rights Reserved 
                         </div>
                     </div>
+                    <div>
+                    Owned by <a href="#" class="text-yellow-500 text-bold">BENARD MULWA.</a>
+                    </div>
                 </div>
-                
-           <div class="footer_logo container mx-auto mt-10 py-16 px-4 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-y-10 sm:gap-y-10 md:gap-y-12 lg:gap-y-16 lg:gap-x-20 gap-x-8 text-center lg:text-left items-center lg:items-start justify-items-center lg:justify-items-start">
 
-                <div class="flex items-center lg:items-start justify-center lg:justify-start">
-                    <div class="w-48 md:w-48 aspect-square overflow-hidden rounded-full bg-white shadow-lg">
-                        <img src="{% static 'logo.png' %}" alt="web_logo"  class="w-full h-full object-contain p-3" >
-                </div>
-            </div>
-              <!--Quick Services-->
-        
-        
-            <!--support-->
-            <div>
-                <h3 class="text-xl font-semibold text-yellow-500 mb-2">Support</h3>
-                <ul class="space-y-2 text-gray-400">
-                 <li><a href="#" class="hover:text-yellow-400">FAQs</a></li>
-                 <li><a href="#" class="hover:text-yellow-400">Terms of Service</a></li>
-                 <li><a href="#" class="hover:text-yellow-400">Privacy Policy</a></li>  
-                </ul>
-            </div>
-            <!--contacts-->
-            <div>
-               <h3 class="text-xl font-bold text-yellow-500 mb-2 rounded-md">Contact Me</h3>
-                <ul class="flex flex-col text-gray-400">
-                 <li><a href="tel:+254 7123456#" class="hover:text-green-500">+254 714073826</a></li>
-                 <li><a href="tel:+254 7123456#" class="hover:text-green-500">+254 725603575</a></li>
-                 <li><a href="email#" class="hover:text-blue-500">mulwabenard9507@gmail.com</a></li>
-                 <li><a href="location#" class="hover:text-blue-400">NAIROBI, 00153, KENYA</a></li>  
-                </ul>
-            </div>
-
-             <div>
-               <h3 class="text-xl font-bold text-yellow-500 mb-2 rounded-md">Location</h3>
-                <ul class="flex flex-col text-gray-400">
-                 <li><a href="tel:+254 7123456#" class="hover:text-green-500">CyberConnect</a></li>
-                 <li><a href="tel:+254 7123456#" class="hover:text-green-500">Nairobi, 00100,CBD</a></li>
-                 <li><a href="location#" class="hover:text-blue-400">Off Tom Mboya street, 3rd floor</a></li> 
-                 <li><a href="location#" class="hover:text-blue-400">KENYA</a></li>  
-                </ul>
-            </div>
-            </div>
             </div>
         </footer>
 </body>

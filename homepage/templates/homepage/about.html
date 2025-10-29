@@ -1,0 +1,79 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block title %}About Me - Online Services{% endblock %}
+
+{% block content %}
+<!--About me-->
+<section id="about" class="relative overflow-hidden bg-white text-black">
+    <div class="about_top flex flex-col items-center gap-3 text-center mb-2 md:mb-20 px-2 py-2 p-4">
+        <h2 class="title text-4xl">About me</h2> 
+        <p class="max-w-2xl text-lg">
+            Follow Instructions & Guidelines for More <br> information.
+        </p>
+    </div>
+
+    <div class="container mx-auto px-4 py-2 space-y-2">
+        <!--Item 1 -->
+        <div class="flex flex-col items-center lg:flex-row gap-5">
+            <!--Image section-->
+            <div class="about_item_1-img w-full lg:w-1/2 px-4">
+                <img src="{% static 'modified.png' %}" alt="modified" class="w-full sm:w-2/3 lg:w-full xl:w-[80%] rounded-lg shadow-lg transition-transform duration-500 hover:scale-105">
+            </div>
+
+            <!--Text to right-->
+            <div class="about_item_2-content w-full lg:w-1/2 space-y-7 text-xl text-left">
+                <div>
+                    <h3 class="text-2xl font-bold text-center">
+                        Powering Every day <span class="">Digital Technology</span> <br>
+                        Access to All Clients.
+                    </h3> 
+                    <br>
+                    <div class="space-y-5">
+                        <p class="text-base sm:text-lg md:text-xl font-normal">
+                            As the founder and operator of <span class="font-bold text-yellow-600">HAVILLA Digitech Solutions,</span> my passion lies in making digital technology accessible, efficient,
+                            and impactful for everyone — from students working on assignments to entrepreneurs running their businesses online. I am committed to helping individuals, students, and 
+                            businesses access essential digital services.
+                        </p><br>
+                        <p class="text-base sm:text-lg md:text-xl font-normal">
+                            With a deep understanding of the challenges many face in accessing stable internet, modern equipment, and tech support, 
+                            I’ve built this Havilla blog to be more than just a cyber café — but a community-driven digital hub.
+                            <br> I strive to create a welcoming space where clients feel empowered to visit us; browse, learn, print, apply, and connect without barriers. <br><br>Whether it’s assisting with government e-Services, offering computer training, or developing software solutions,
+                            our mission is to bridge the digital gap with trust, <span class="text-xl font-bold">professionalism, and a human touch.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Item 2 -->
+        <div class="container mx-auto flex flex-col items-center lg:flex-row-reverse gap-5">
+            <!--Image section-->
+            <div class="about_item_2-img w-full lg:w-1/2 px-4">
+                <img src="{% static 'browsing.png' %}" alt="modified" class="w-full sm:w-2/3 lg:w-full xl:w-[80%] rounded-lg shadow-lg transition-transform duration-500 hover:scale-105">
+            </div>
+
+            <!--Text to right-->
+            <div class="about_item_2-content w-full lg:w-1/2 space-y-7 text-xl text-left">
+                <div class="space-y-1">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-0">
+                        Now Your Ultimate Digital Online Solutions Gateway <span class="">Starts Here!</span>
+                    </h2>
+                    <br>
+                    <p class="text-base sm:text-lg md:text-xl font-normal">
+                        Welcome to <span class="text-yellow-600 font-semibold">DIGITECH Blog</span>, your trusted digital gateway for smart, reliable, and timely online solutions
+                        as well as we offer a seamless digital experience. From <span class="font-semibold">fast and secure browsing</span>, to <span class="font-semibold">online application support</span> 
+                        and <span class="font-semibold">academic services</span>, we cater to students, professionals, and entrepreneurs alike.
+                    </p> 
+                    <br>
+                    <p class="text-base sm:text-lg md:text-xl font-normal">
+                        Our platform is designed for <span class="font-semibold">comfort, efficiency</span>, and
+                        <span class="font-semibold">affordability</span>, making it the perfect space for work, study, or business.
+                        Whether you're submitting urgent documents, attending virtual meetings, or researching for school, <span class="text-yellow-600 font-semibold">DIGITECH Website</span> is your go-to digital hub. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

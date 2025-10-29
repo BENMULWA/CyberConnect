@@ -1,0 +1,169 @@
+{% extends homepage/base.html'%}
+{% block title %}Services - Online Services{% endblock %}
+
+{% block content %}
+               
+<!--Services-->
+         <section id="services" class="bg-yellow-100 rounded-3xl">
+<!--heading 1-->
+                    <div class="service_top flex flex-col items-center gap-1 text-center mb-10 md:mb-28">
+                            <h2 class="title text-4xl">Our Services</h2>
+                            <p class="max-w-2xl text-xl">Explore Our Core Offers</p>
+                    </div>
+
+                    <div class="container w-full grid grid-cols-1 gap-x-8 gap-y-36 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+<!--Service grid 1-->
+
+                        <div class="service_card bg-green-900 service_card p-10 sm:p-20 pt-52 rounded-md relative w-full max-w-md mx-auto">
+                            <img src="{% static 'ecitizen_service.png' %}" alt="ecitizen" class="w-56 sm:w-44 absolute -top-5 left-1/2 transform -translate-x-1/2 rounded-2xl shadow-md transition-transform duration-300 hover:scale-105"/>
+                        
+                        
+                            <div class="flex flex-col items-center justify-center text-white mt-28 rounded-lg">
+                                <p class="text-lg font-semibold mb-2 italic">Ecitizen Applications</p>
+                                
+                                <a href="{% url 'ecitizen_detail' %}">
+                                <button class="mt-3 px-4 py-2 text-center bg-yellow-500 text-green-950 font-bold rounded-lg hover:bg-yellow-400 transition">
+                                    Service Description
+                                </button>
+                                </a>
+                                
+                                <div class="text-yellow-500 text-xs py-3 flex justify-center gap-1">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-half-line"></i>
+                                    <i class="ri-star-line text-gray-400"></i>
+                                </div>
+                            
+                                <button class="mt-3 flex items-center gap-2 px-3 py-2 bg-yellow-500 text-green-950 font-bold rounded-lg hover:bg-yellow-400 transition">
+                                    <i class="ri-shopping-cart-fill"></i>
+                                        <span>Order Service</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                    
+
+ <!--Service grid 2--> 
+                        <div class="service_card bg-green-900 service_card p-10 sm:p-20 pt-52 rounded-md relative w-full max-w-md mx-auto">
+                            <img src="{% static 'NTSA.png' %}" alt="ecitizen" class="w-56 sm:w-44 absolute -top-5 left-1/2 transform -translate-x-1/2 rounded-2xl shadow-md transition-transform duration-300 hover:scale-105"/>
+                        
+                        
+                            <div class="flex flex-col items-center justify-center text-white mt-28 rounded-lg">
+                                <p class="text-lg font-semibold mb-2 italic">NTSA Applications</p>
+                                <button class="mt-3 px-4 py-2 bg-yellow-500 text-green-950 font-bold rounded-lg hover:bg-yellow-400 transition">
+                                    Service Description
+                                </button>
+                                <div class="text-yellow-500 text-xs py-3 flex justify-center gap-1">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-half-line"></i>
+                                    <i class="ri-star-line text-gray-400"></i>
+                                </div>
+                            
+                                <button class="mt-3 flex items-center gap-2 px-4 py-2 bg-yellow-500 text-green-950 font-bold rounded-lg hover:bg-yellow-400 transition">
+                                    <i class="ri-shopping-cart-fill"></i>
+                                        <span>Order Service</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                   
+ <!--Service grid 3--> 
+                        <div class="service_card bg-green-900 service_card p-10 sm:p-20 pt-52 rounded-md relative w-full max-w-md mx-auto">
+                            <img src="{% static 'KRA.png' %}" alt="ecitizen" class="w-56 h-44 max-h-[500px] sm:w-44 absolute -top-5 left-1/2 transform -translate-x-1/2 rounded-3xl shadow-md transition-transform duration-300 hover:scale-105"/>
+                        
+                        
+                            <div class="flex flex-col items-center justify-center text-white mt-28 rounded-lg">
+                                <p class="text-lg font-semibold mb-2 italic">KRA Applications</p>
+                                <button class="mt-3 px-4 py-2 bg-yellow-500 text-green-950 font-bold rounded-lg hover:bg-yellow-400 transition">
+                                    Service Description
+                                </button>
+                                <div class="text-yellow-500 text-xs py-3 flex justify-center gap-1">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-half-line"></i>
+                                    <i class="ri-star-line text-gray-400"></i>
+                                </div>
+                            
+                                <button class="mt-3 flex items-center gap-2 px-4 py-2 bg-yellow-500 text-green-950 font-bold rounded-lg hover:bg-yellow-400 transition">
+                                    <i class="ri-shopping-cart-fill"></i>
+                                        <span>Order Service</span>
+                                </button>
+                            </div>
+                        </div>  
+                        
+ <!--Service grid 4--> 
+                        <div class="service_card bg-green-900 service_card p-10 sm:p-20 pt-52 rounded-md relative w-full max-w-md mx-auto">
+                            <img src="{% static 'SHA.png' %}" alt="ecitizen" class="w-56 sm:w-56 absolute -top-5 left-1/2 transform -translate-x-1/2 rounded-3xl shadow-md transition-transform duration-300 hover:scale-105"/>
+                        
+                        
+                            <div class="flex flex-col items-center justify-center text-white mt-28 rounded-lg">
+                                <p class="text-lg font-semibold mb-2 italic">SHA Applications</p>
+                                <button class="mt-3 px-4 py-2 bg-yellow-500 text-green-950 font-bold rounded-lg hover:bg-yellow-400 transition">
+                                    Service Description
+                                </button>
+                                <div class="text-yellow-500 text-xs py-3 flex justify-center gap-1">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-half-line"></i>
+                                    <i class="ri-star-line text-gray-400"></i>
+                                </div>
+                            
+                                <button class="mt-3 flex items-center gap-2 px-4 py-2 bg-yellow-500 text-green-950 font-bold rounded-lg hover:bg-yellow-400 transition">
+                                    <i class="ri-shopping-cart-fill"></i>
+                                        <span>Order Service</span>
+                                </button>
+                            </div>
+                        </div>   
+
+ <!--Service grid 5--> 
+                        <div class="service_card bg-green-900 service_card p-10 sm:p-20 pt-52 rounded-md relative w-full max-w-md mx-auto">
+                            <img src="{% static 'HELB.png' %}" alt="ecitizen" class="w-56 sm:w-44 absolute -top-5 left-1/2 transform -translate-x-1/2 rounded-2xl shadow-md transition-transform duration-300 hover:scale-105"/>
+                        
+                        
+                            <div class="flex flex-col items-center justify-center text-white mt-28 rounded-lg">
+                                <p class="text-lg font-semibold mb-2 italic">HELB Applications</p>
+                                <button class="mt-3 px-4 py-2 bg-yellow-500 text-green-950 font-bold rounded-lg hover:bg-yellow-400 transition">
+                                    Service Description
+                                </button>
+                                <div class="text-yellow-500 text-xs py-3 flex justify-center gap-1">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-half-line"></i>
+                                    <i class="ri-star-line text-gray-400"></i>
+                                </div>
+                            
+                                <button class="mt-3 flex items-center gap-2 px-4 py-2 bg-yellow-500 text-green-950 font-bold rounded-lg hover:bg-yellow-400 transition">
+                                    <i class="ri-shopping-cart-fill"></i>
+                                        <span>Order Service</span>
+                                </button>
+                            </div>
+                        </div>
+
+ <!--Service grid 6--> 
+                        <div class="service_card bg-green-900 service_card p-10 sm:p-20 pt-52 rounded-md relative w-full max-w-md mx-auto">
+                            <img src="{% static 'TSC.png' %}" alt="ecitizen" class="w-56 sm:w-44 absolute -top-5 left-1/2 transform -translate-x-1/2 rounded-2xl shadow-md transition-transform duration-300 hover:scale-105"/>
+                        
+                        
+                            <div class="flex flex-col items-center justify-center text-white mt-28 rounded-lg">
+                                <p class="text-lg font-semibold mb-2 italic">TSC Applications</p>
+                                <button class="mt-3 px-4 py-2 bg-yellow-500 text-green-950 font-bold rounded-lg hover:bg-yellow-400 transition">
+                                    Service Description
+                                </button>
+                                <div class="text-yellow-500 text-xs py-3 flex justify-center gap-1">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-half-line"></i>
+                                    <i class="ri-star-line text-gray-400"></i>
+                                </div>
+                            
+                                <button class="mt-3 flex items-center gap-2 px-4 py-2 bg-yellow-500 text-green-950 font-bold rounded-lg hover:bg-yellow-400 transition">
+                                    <i class="ri-shopping-cart-fill"></i>
+                                        <span>Order Service</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                    </div>
+            </section>
+{% endblock %}
