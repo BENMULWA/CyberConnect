@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'BLOG_WEBSITE.urls'
 
 TEMPLATES = [
@@ -63,9 +64,11 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'homepage.count_cart.cart_count',
             ],
         },
     },
@@ -128,6 +131,13 @@ STATICFILES_DIRS = [
 
 # For production use with collectstatic
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Media files (Uploaded by users)
+
+import os
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Default primary key field type

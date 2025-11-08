@@ -1,0 +1,145 @@
+
+<!--This is the cart view page/ that shows the items in the user's cart selected services-->
+
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="bg-yellow-100 max-w-6xl mx-auto px-6 py-10 mb-10 mt-6 rounded-lg shadow-md animate-fadeIn">
+  <h2 class="text-2xl font-bold text-black flex items-center gap-2 mb-8 ml-10">
+    🛒 Your Cart
+  </h2>
+
+  {% if not cart %}
+    <div class="text-center py-10">
+      <p class="text-black text-lg mb-4">Your cart is empty.</p>
+      <a href="{% url 'services' %}" class="bg-green-700 text-white px-6 py-3 rounded-md hover:bg-green-800 transition">
+        Browse Services
+      </a>
+    </div>
+  {% else %}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Cart Items Table -->
+      <div class="md:col-span-2 bg-white shadow-md rounded-lg overflow-x-auto">
+        <table class="min-w-full text-left text-black">
+          <thead class="bg-gray-100 border-b">
+            <tr>
+              <th class="p-4 text-black">Product</th>
+              <th class="p-4 text-center text-black">Quantity</th>
+              <th class="p-4 text-right text-black">Price</th>
+              <th class="p-4 text-right text-black">Total</th>
+              <th class="p-4 text-center text-black">Action</th>
+            </tr>
+          </thead>
+          <tbody id="cart-body">
+            {% for key, item in cart.items %}
+            <tr class="border-b hover:bg-gray-50 transition" data-id="{{ key }}">
+              <td class="p-4 flex items-start gap-4">
+                  <div class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex-shrink-0 overflow-hidden rounded bg-gray-100 border">
+                      <img src="{% static item.image %}" alt="{{ item.name }}" class="w-full h-full sm:w-40 sm:h-40 object-contain">
+                  </div>
+
+                    <div>
+                      <p class="font-semibold text-black">{{ item.name }}</p>
+                      <p class="text-sm text-gray-600 mt-1">{{ item.description|default:"No description available." }}</p>
+                  </div>
+              </td>
+              <td class="p-4 text-center">
+                    <input type="number" value="{{ item.quantity }}" min="1" class="w-16 border border-gray-400 rounded text-center text-black quantity-input focus:ring-2 focus:ring-green-600">
+              </td>
+              <td class="p-4 text-right text-black font-semibold">KSh {{ item.price|floatformat:2 }}</td>
+              <td class="p-4 text-right text-black font-semibold item-total">
+                  KSh {{ item.price|floatformat:2|floatformat:2|add:"0"|floatformat:2 }}
+              </td>
+              <td class="p-4 text-center">
+                <button class="remove-btn text-lg text-pink-500 hover:text-red-900 font-semibold transition">
+                  Remove
+                </button>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Cart Summary -->
+      <div class="bg-white shadow-md rounded-lg p-6 flex flex-col justify-between">
+        <h3 class="text-xl font-bold text-black mb-4">🧾Cart Summary</h3>
+        <div class="space-y-3 text-black text-sm">
+          <div class="flex justify-between">
+            <span>Free Shipping:</span>
+            <span class="font-semibold text-green-700">FREE</span>
+          </div>
+          <div class="flex justify-between text-base font-bold">
+            <span>Subtotal:</span>
+            <span id="cart-subtotal" class="text-green-700">KSh {{ subtotal }}</span>
+          </div>
+          <div class="flex justify-between text-lg font-bold">
+            <span>Total:</span>
+            <span id="cart-total" class="text-green-700">KSh {{ total }}</span>
+          </div>
+        </div>
+        <a href="{% url 'checkout' %}" class="mt-6 bg-green-700 text-white text-center px-6 py-3 rounded-md hover:bg-green-800 transition">
+          Proceed to Checkout
+        </a>
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]')?.value;
+
+  // Update quantity
+  document.querySelectorAll(".quantity-input").forEach(input => {
+    input.addEventListener("change", async (e) => {
+      const row = e.target.closest("tr");
+      const itemId = row.dataset.id;
+      const quantity = e.target.value;
+
+      const response = await fetch(`/cart/update/${itemId}/`, {
+        method: "POST",
+        headers: {
+          "X-CSRFToken": csrftoken,
+          "X-Requested-With": "XMLHttpRequest",
+        },
+        body: new URLSearchParams({ quantity })
+      });
+
+      const data = await response.json();
+      if (data.success) {
+    row.querySelector(".item-total").textContent = `KSh ${data.item_total}`;
+    document.querySelector("#cart-subtotal").textContent = `KSh ${data.subtotal}`;
+    document.querySelector("#cart-total").textContent = `KSh ${data.total}`;
+  }
+
+    });
+  });
+
+  // Remove item
+  document.querySelectorAll(".remove-btn").forEach(button => {
+    button.addEventListener("click", async (e) => {
+      const row = e.target.closest("tr");
+      const itemId = row.dataset.id;
+
+      const response = await fetch(`/cart/remove/${itemId}/`, {
+        method: "POST",
+        headers: {
+          "X-CSRFToken": csrftoken,
+          "X-Requested-With": "XMLHttpRequest",
+        },
+        body: new URLSearchParams({ item_id: itemId })
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        row.remove();
+        document.querySelector("#cart-subtotal").textContent = `KSh ${data.subtotal}`;
+        document.querySelector("#cart-total").textContent = `KSh ${data.total}`;
+      }
+    });
+  });
+});
+</script>
+{% endblock %}

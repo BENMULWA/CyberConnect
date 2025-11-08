@@ -1,0 +1,72 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="container mx-auto py-10 px-6">
+  <div class="grid md:grid-cols-2 gap-8 items-start">
+    
+    <!-- LEFT: Service Image & Info -->
+    <div>
+      <div class="border rounded-xl shadow-md overflow-hidden bg-gray-50">
+        {% if service.image %}
+          <img src="{% static service.image %}" alt="{{ service.name }}" class="w-full h-80 object-contain bg-gray-100">
+        {% else %}
+          <img src="{% static 'ecitizen.png' %}" alt="Default Service" class="w-full h-80 object-contain bg-gray-100">
+        {% endif %}
+      </div>
+
+      <div class="ml-9 mt-6 mb-10">
+      <h1 class="text-3xl font-bold text-green-800 mb-3">{{ service.name }}</h1>
+      <p class="text-gray-700 mb-6">{{ service.description }}</p>
+      <p class="text-xl font-bold text-black mb-4">KSh {{ service.price }}</p>
+
+      <p class="text-black font-semibold text-md italic mb-2 sm:text-md">
+        ✔️ This service has been added to your cart successfully.
+      </p>
+
+      
+   <div class="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-5 mt-10 w-full">
+  
+  <!-- View Cart Button -->
+  <a href="{% url 'view_cart' %}?cart_list=1234"
+     class="bg-yellow-500 text-white text-center px-6 py-3 w-full sm:w-auto rounded-md font-semibold hover:bg-yellow-600 transition sm:h-12">
+    🛒 View Cart
+  </a>
+
+  <!-- Checkout Button -->
+  <a href="{% url 'checkout' %}"
+     class="bg-green-700 text-white text-center px-6 py-3 w-full sm:w-auto rounded-md font-semibold hover:bg-green-600 transition sm:h-12">
+    Proceed to Checkout
+  </a>
+
+</div>
+
+    </div>
+    </div>
+
+    <!-- RIGHT: WhatsApp & Support Info -->
+    <div class="ml-10">
+      <h2 class="text-lg font-semibold mb-3 text-green-900">Need Assistance?</h2>
+      <p class="text-sm mb-4 text-gray-700 leading-relaxed">
+        Got any questions about this service? Chat with us on WhatsApp for instant support!  
+        We’re available <strong>Monday – Saturday, 7:00am to 10:00pm</strong>.
+      </p>
+ <a href="https://wa.me/254714073826?text=Hello%2C%20Cyber%20Connect!%20I%20would%20like%20to%20request%20this%20service%20for%20eCitizen%20order."
+   target="_blank"
+   class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-4 rounded-lg transition gap-2 shadow-md">
+  <img src="{% static 'whatapp_icon.png' %}" alt="WhatsApp" class="w-8 h-8">
+  <span>Chat on WhatsApp</span>
+</a>
+<div>
+<a href="tel:+254714073826" 
+         class="mt-6 inline-block text-green-800 underline hover:text-green-900">
+        📞 Call Us: +254 714 0738 26 <br> 
+        <span>📞 Call Us: +254 725 6035 75 </span>
+</a>
+</div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
