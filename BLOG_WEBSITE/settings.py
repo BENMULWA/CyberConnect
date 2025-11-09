@@ -132,6 +132,9 @@ STATICFILES_DIRS = [
 # For production use with collectstatic
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+# Serve compressed static files
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Media files (Uploaded by users)
 
 import os
