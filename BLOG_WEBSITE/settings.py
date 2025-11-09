@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +25,7 @@ SECRET_KEY = 'django-insecure-^6bw(n1u%#w))gct+x)g5tisa29)k^ud^xdtmdf%b1)&7aq((3
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['cyberconnect-ke-1.onrender.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['cyberconnect-ke-9ij3.onrender.com', '127.0.0.1', 'localhost']
 
 
 
