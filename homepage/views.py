@@ -4,11 +4,14 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.core import signing
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
-from .models import Service, ServiceBooking
-from .models import Order
+from .models import Order,Service
 import requests
 from django.core.mail import send_mail
+from .forms import CheckoutForm
 from django.conf import settings
+from twilio.rest import Client
+
+
 
 # --------------------------------------
 # TOKEN HANDLER
@@ -154,6 +157,7 @@ ECITIZEN_SERVICES = [
 
     
 
+# cart logic 
 
 # --------------------------------------
 # SERVICE DETAIL / ADD TO CART
@@ -196,39 +200,85 @@ def service_detail(request, service_id):
     # Redirect to booking page first instead of cart
     return render(request, 'homepage/book_service.html', {'service': service_data, 'cart_items': cart})
 
+
 # --------------------------------------
 # CART VIEWS
 # --------------------------------------
+
 def view_cart(request):
     cart = request.session.get("cart", {})
 
-    subtotal = sum(float(item["price"]) * int(item["quantity"]) for item in cart.values())
-    total = subtotal
+    # Defensive check to avoid junk/default values
+    if not isinstance(cart, dict):
+        cart = {}
+
+    subtotal = 0
+    clean_cart = {}
+
+    for key, item in cart.items():
+        try:
+            price = float(item.get("price", 0))
+            quantity = int(item.get("quantity", 0))
+        except:
+            continue
+
+        # Skip invalid or empty items
+        if quantity <= 0:
+            continue
+
+        item["total"] = price * quantity
+        clean_cart[key] = item
+        subtotal += item["total"]
+
+    request.session["cart"] = clean_cart
 
     return render(request, "homepage/view_cart.html", {
-        "cart": cart,   # ✅ matches your template’s `{% for key, item in cart.items %}`
+        "cart": clean_cart,
         "subtotal": round(subtotal, 2),
-        "total": round(total, 2),
+        "total": round(subtotal, 2),
     })
 
 
 @csrf_exempt
 def update_cart(request, service_id):
     if request.method == "POST":
-        quantity = int(request.POST.get("quantity", 1))
         cart = request.session.get("cart", {})
+
+        if not isinstance(cart, dict):
+            return JsonResponse({"success": False})
+
+        quantity = int(request.POST.get("quantity", 1))
+
         if str(service_id) in cart:
-            cart[str(service_id)]["quantity"] = quantity
+
+            # If quantity is 0 remove it
+            if quantity <= 0:
+                del cart[str(service_id)]
+            else:
+                cart[str(service_id)]["quantity"] = quantity
+
             request.session["cart"] = cart
             request.session.modified = True
 
-            subtotal = sum(float(i["price"]) * int(i["quantity"]) for i in cart.values())
-            item_total = float(cart[str(service_id)]["price"]) * quantity
+            # Recalculate totals
+            subtotal = sum(
+                float(i["price"]) * int(i["quantity"]) 
+                for i in cart.values() 
+                if int(i["quantity"]) > 0
+            )
+
+            item_total = 0
+            if str(service_id) in cart:
+                item_total = float(cart[str(service_id)]["price"]) * quantity
+
             return JsonResponse({
                 "success": True,
                 "item_total": f"{item_total:.2f}",
-                "cart_total": f"{subtotal:.2f}",
+                "subtotal": f"{subtotal:.2f}",
+                "total": f"{subtotal:.2f}",
+                "cart_count": len(cart),
             })
+
     return JsonResponse({"success": False})
 
 
@@ -236,24 +286,38 @@ def update_cart(request, service_id):
 def remove_from_cart(request, service_id):
     if request.method == "POST":
         cart = request.session.get("cart", {})
+
+        if not isinstance(cart, dict):
+            return JsonResponse({"success": False})
+
         if str(service_id) in cart:
             del cart[str(service_id)]
-            request.session["cart"] = cart
-            request.session.modified = True
 
-            subtotal = sum(float(i["price"]) * int(i["quantity"]) for i in cart.values())
-            return JsonResponse({
-                "success": True,
-                "cart_total": f"{subtotal:.2f}",
-            })
+        request.session["cart"] = cart
+        request.session.modified = True
+
+        subtotal = sum(
+            float(i["price"]) * int(i["quantity"]) 
+            for i in cart.values() 
+            if int(i["quantity"]) > 0
+        )
+
+        return JsonResponse({
+            "success": True,
+            "subtotal": f"{subtotal:.2f}",
+            "total": f"{subtotal:.2f}",
+            "cart_count": len(cart),
+        })
+
     return JsonResponse({"success": False})
-
 
 
 
 # --------------------------------------
 # CHECKOUT
 # --------------------------------------
+
+
 def checkout_view(request):
     cart = request.session.get("cart", {})
     if not cart:
@@ -261,7 +325,7 @@ def checkout_view(request):
         return redirect("view_cart")
 
     subtotal = sum(float(item["price"]) * int(item["quantity"]) for item in cart.values())
-    total = subtotal  # Add shipping later if needed
+    total = subtotal
 
     if request.method == "POST":
         first_name = request.POST.get("first_name")
@@ -272,7 +336,7 @@ def checkout_view(request):
         country = request.POST.get("country")
         notes = request.POST.get("notes")
 
-        # Save order
+        # Save Order
         order = Order.objects.create(
             first_name=first_name,
             last_name=last_name,
@@ -285,24 +349,68 @@ def checkout_view(request):
             total=total,
         )
 
-        # Email alert
-        send_mail(
-            subject=f"🛍️ New Order from {first_name} {last_name}",
-            message=f"New order placed.\nName: {first_name} {last_name}\nPhone: {phone}\nTotal: KSh {total}\nNotes: {notes}",
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[settings.ADMIN_EMAIL],
-        )
-
-        # WhatsApp alert (via CallMeBot or Twilio)
+        # ---------------------------------------
+        # 1️⃣ Send Email Notification to Admin
+        # ---------------------------------------
         try:
-            requests.get(
-                f"https://api.callmebot.com/whatsapp.php?phone=+254YOURNUMBER&text=New+Order:+{first_name}+{last_name}+Total+KSh+{total}&apikey=YOUR_API_KEY"
+            send_mail(
+                subject=f"🛒 New Order from {first_name} {last_name}",
+                message=(
+                    f"New Order Received!\n\n"
+                    f"Customer: {first_name} {last_name}\n"
+                    f"Phone: {phone}\n"
+                    f"Email: {email}\n"
+                    f"Total: KSh {total}\n"
+                    f"Till No: {order.till_no}\n"
+                    f"Location: {city}, {country}\n"
+                    f"Notes: {notes}\n"
+                ),
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[settings.ADMIN_EMAIL],
+                fail_silently=False,
             )
-        except:
-            pass
+        except Exception as e:
+            print("⚠️ Email notification failed:", e)
 
-        messages.success(request, "Your order has been placed successfully!")
-        request.session["cart"] = {}  # Clear cart
+        # ---------------------------------------
+        # 2️⃣ Send WhatsApp Notification via Twilio
+        # ---------------------------------------
+        try:
+            client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+
+            # Send to Admin (You)
+            client.messages.create(
+                from_=settings.TWILIO_WHATSAPP_NUMBER,
+                to=settings.ADMIN_WHATSAPP_NUMBER,
+                body=(
+                    f"📦 *New Order Received!*\n\n"
+                    f"👤 {first_name} {last_name}\n"
+                    f"📞 {phone}\n"
+                    f"💰 Total: KSh {total}\n"
+                    f"🧾 Till No: {order.till_no}\n"
+                    f"🌍 {city}, {country}\n"
+                    f"🕒 {order.created_at:%Y-%m-%d %H:%M}"
+                ),
+            )
+
+            # (Optional) Send confirmation message to customer
+            client.messages.create(
+                from_=settings.TWILIO_WHATSAPP_NUMBER,
+                to=f"whatsapp:+{phone.replace('0', '254', 1)}",  # Converts e.g. 0714... → +254714...
+                body=(
+                    f"👋 Hello {first_name}, your order has been received successfully!\n\n"
+                    f"Total: KSh {total}\n"
+                    f"Till No: 3655623\n"
+                    f"Our team will contact you shortly.\n\n"
+                    f"Thank you for choosing *CyberConnect* 💚"
+                ),
+            )
+
+        except Exception as e:
+            print("⚠️ WhatsApp notification failed:", e)
+
+        messages.success(request, "✅ Your order has been placed successfully!")
+        request.session["cart"] = {}
         return redirect("order_success")
 
     return render(request, "homepage/checkout.html", {
@@ -310,29 +418,140 @@ def checkout_view(request):
         "subtotal": subtotal,
         "total": total,
     })
-
-
 # --------------------------------------
 # BOOK SERVICE
 # --------------------------------------
-def book_service(request, service_id):
-    try:
-        service = Service.objects.get(id=service_id)
-        service_name = service.name
-    except Service.DoesNotExist:
-        service_name = request.GET.get("access", "Unknown Service").replace("_", " ").title()
-        booking = ServiceBooking.objects.create(
-            service_name=service_name,
-            full_name="Guest User",
-            phone_number="Not Provided",
-            transaction_code="Pending",
-        )
-    else:
-        booking = ServiceBooking.objects.create(
-            service=service,
-            full_name="Guest User",
-            phone_number="Not Provided",
-            transaction_code="Pending",
-        )
 
-    return redirect("https://forms.gle/your_google_form_id_here")
+
+
+GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse"
+
+def checkout_view(request):
+    cart = request.session.get("cart", {})
+    if not cart:
+        messages.warning(request, "Your cart is empty.")
+        return redirect("view_cart")
+
+    subtotal = sum(float(item["price"]) * int(item["quantity"]) for item in cart.values())
+    total = subtotal
+
+    if request.method == "POST":
+        form = CheckoutForm(request.POST)
+        if form.is_valid():
+            # Extract cleaned data
+            first_name = form.cleaned_data["first_name"]
+            last_name = form.cleaned_data["last_name"]
+            phone = form.cleaned_data["phone"]
+            email = form.cleaned_data["email"]
+            city = form.cleaned_data["city"]
+            country = form.cleaned_data["county"]
+            till_name = form.cleaned_data["till_name"]
+
+            # Save order in DB
+            order = Order.objects.create(
+                first_name=first_name,
+                last_name=last_name,
+                phone=phone,
+                email=email,
+                city=city,
+                country=country,
+                till_no=till_name,
+                subtotal=subtotal,
+                total=total,
+            )
+
+            # -------------------------------
+            # 1️⃣ Submit to Google Form
+            # -------------------------------
+            google_data = {
+                'entry.1111111111': first_name,
+                'entry.2222222222': last_name,
+                'entry.3333333333': phone,
+                'entry.4444444444': email,
+                'entry.5555555555': country,
+                'entry.6666666666': city,
+                'entry.7777777777': till_name,
+            }
+
+            try:
+                response = requests.post(GOOGLE_FORM_URL, data=google_data)
+                if response.status_code != 200:
+                    print("⚠️ Google Form submission failed:", response.status_code)
+            except Exception as e:
+                print("⚠️ Google Form submission error:", e)
+
+            # -------------------------------
+            # 2️⃣ Email notification
+            # -------------------------------
+            try:
+                send_mail(
+                    subject=f"🛒 New Order from {first_name} {last_name}",
+                    message=(
+                        f"New Order Received!\n\n"
+                        f"Customer: {first_name} {last_name}\n"
+                        f"Phone: {phone}\n"
+                        f"Email: {email}\n"
+                        f"Total: KSh {total}\n"
+                        f"Till No: {till_name}\n"
+                        f"Location: {city}, {country}\n"
+                    ),
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[settings.ADMIN_EMAIL],
+                    fail_silently=True,
+                )
+            except Exception as e:
+                print("⚠️ Email notification failed:", e)
+
+            # -------------------------------
+            # 3️⃣ WhatsApp via Twilio (Optional)
+            # -------------------------------
+            try:
+                from twilio.rest import Client
+                client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+
+                # Admin notification
+                client.messages.create(
+                    from_=settings.TWILIO_WHATSAPP_NUMBER,
+                    to=settings.ADMIN_WHATSAPP_NUMBER,
+                    body=(
+                        f"📦 New Order!\n"
+                        f"{first_name} {last_name}\n"
+                        f"Phone: {phone}\n"
+                        f"Total: KSh {total}\n"
+                        f"Till No: {till_name}\n"
+                        f"{city}, {country}"
+                    ),
+                )
+
+                # Customer confirmation
+                client.messages.create(
+                    from_=settings.TWILIO_WHATSAPP_NUMBER,
+                    to=f"whatsapp:+{phone.replace('0', '254', 1)}",
+                    body=(
+                        f"👋 Hello {first_name}, your order has been received successfully!\n"
+                        f"Total: KSh {total}\n"
+                        f"Till No: {till_name}\n"
+                        f"Our team will contact you shortly.\n\n"
+                        f"Thank you for choosing CyberConnect 💚"
+                    ),
+                )
+            except Exception as e:
+                print("⚠️ WhatsApp notification failed:", e)
+
+            # Clear cart
+            request.session["cart"] = {}
+            messages.success(request, "✅ Your order has been placed successfully!")
+            return redirect("order_success")
+        else:
+            # Form invalid
+            messages.error(request, "Please correct the errors below.")
+
+    else:
+        form = CheckoutForm()
+
+    return render(request, "homepage/checkout.html", {
+        "cart": cart,
+        "subtotal": subtotal,
+        "total": total,
+        "form": form
+    })

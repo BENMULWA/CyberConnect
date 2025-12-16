@@ -42,12 +42,16 @@
                     
             </ul>
         </div>
-    <div class="relative cursor-pointer py-3 px-2">
-        <i class="ri-shopping-cart-2-fill text-white sm:text-3xl lg:text-4xl hover:scale-105 hover:text-yellow-500 transition duration-300"></i>
+        <a href="{% url 'view_cart' %}" title="Go to view_cart">
+        <i class="ri-shopping-cart-2-fill text-white sm:text-3xl lg:text-4xl hover:scale-105 hover:text-yellow-500 transition duration-300 scale-90"></i>
+
         {% if cart_count %}
-        <span class="absolute -top-1 -right-1 bg-yellow-500 text-white text-xs font-bold rounded-full px-2">{{ cart_count }}</span>
+            <span class="absolute -top-1 -right-1 bg-yellow-500 text-white text-xs font-bold rounded-full px-2 py-0.5">
+            {{ cart_count }}
+             </span>
         {% endif %}
-    </div>
+        </a>
+
 
         <!-- Hamburger Icon -->
         <div class="cursor-pointer z-50 text-white hover:bg-green-600 hover:text-yellow-400 transition duration-300 rounded-md">

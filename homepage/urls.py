@@ -18,11 +18,11 @@ urlpatterns = [
     path('know-more/', views.know_more_entry, name='know_more'),
     path('know-more/<str:token>/', views.know_more_detail, name='know_more_detail'),
     
-    # Services
+    # Services path('services/book/<int:service_id>/', views.book_service, name='book_service'),
     path('services/', views.services_entry, name='services'),
     path('services/<str:token>/', views.services_detail, name='services_detail'),
     path('services/detail/<int:service_id>/', views.service_detail, name='service_detail'),
-    path('services/book/<int:service_id>/', views.book_service, name='book_service'),
+    
     
     # eCitizen
     path('ecitizen/', views.ecitizen_entry, name='ecitizen_detail'),
